@@ -47,13 +47,18 @@ namespace MineSweeper
                 Form3 c = new Form3();
                 c.Owner = this;
                 c.ShowDialog();
-                if (c.DialogResult == DialogResult.OK)
+                if (c.DialogResult == DialogResult.Cancel)
+                {
+                    this.Close();
+                }
+                else
                 {
                     row = Int32.Parse(c.row.Text);
                     col = Int32.Parse(c.col.Text);
                     mines = Int32.Parse(c.mines.Text);
                     text = "Custom - " + textBox2.Text;
-                }
+                }            
+                   
             }
             else
                 return;

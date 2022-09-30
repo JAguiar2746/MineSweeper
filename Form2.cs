@@ -96,6 +96,10 @@ namespace MineSweeper
                             {
                                 buttons[i][j].ForeColor = Color.Maroon;
                             }
+                            else
+                            {
+                                buttons[i][j].ForeColor = Color.DarkRed;
+                            }
                         }
                         else
                             buttons[i][j].Enabled = false;
@@ -114,10 +118,11 @@ namespace MineSweeper
                     {
                         b.BackColor = Color.White;
                         field.Flagged.Remove(click_x * buttons[0].Length + click_y);
+                        textBox1.Text = (Int32.Parse(textBox1.Text) + 1).ToString();
                     }
                     else
                     {
-                        b.BackColor = Color.Green;
+                        b.BackColor = Color.Yellow;
                         field.Flagged.Add(click_x * buttons[0].Length + click_y);
                         textBox1.Text = (Int32.Parse(textBox1.Text) - 1).ToString();
 
