@@ -24,12 +24,17 @@ namespace MineSweeper
             int rowVal = Int32.Parse(row.Text);
             int colVal = Int32.Parse(col.Text);
             int minesVal = Int32.Parse(mines.Text);
-            if (rowVal * colVal < 18 || minesVal > rowVal * colVal / 2 || rowVal * colVal * minesVal <= 0)
+            if (rowVal * colVal < 18 || minesVal > rowVal * colVal / 2 || rowVal <= 0 || colVal <= 0 || minesVal <= 0)
                 MessageBox.Show("Invalid values...Please try again");
             else
             {                          
                 this.Close();
             }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

@@ -18,21 +18,6 @@ namespace MineSweeper
             InitializeComponent();
         }
 
-        private void radioButton3_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void radioButton1_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void radioButton2_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void Play(object sender, EventArgs e)
         {
             int row=0, col=0,mines = 0;//row*col >=18, mines <= row*col/2
@@ -62,19 +47,23 @@ namespace MineSweeper
                 Form3 c = new Form3();
                 c.Owner = this;
                 c.ShowDialog();
-                row = Int32.Parse(c.row.Text);
-                col = Int32.Parse(c.col.Text);
-                mines = Int32.Parse(c.mines.Text);
-                text = "Custom - " + textBox2.Text;
-                
+                if (c.DialogResult == DialogResult.OK)
+                {
+                    row = Int32.Parse(c.row.Text);
+                    col = Int32.Parse(c.col.Text);
+                    mines = Int32.Parse(c.mines.Text);
+                    text = "Custom - " + textBox2.Text;
+                }
             }
             else
                 return;
-            int size = Math.Min(30, 1000 / Math.Max(row, col));
-            f = new Form2(text, row, col, size,mines);
-            f.Show(this);
-            textBox1.Text = this.OwnedForms.Length.ToString();
-
+            if (row > 0 && col > 0 && mines > 0)
+            {
+                int size = Math.Min(30, 1000 / Math.Max(row, col));
+                f = new Form2(text, row, col, size, mines);
+                f.Show(this);
+                textBox1.Text = this.OwnedForms.Length.ToString();
+            }
         }
 
         private void Close(object sender, EventArgs e)
@@ -87,7 +76,7 @@ namespace MineSweeper
 
         }
 
-        private void Menu_Click(object sender, EventArgs e)
+        private void exitMenuClick(object sender, EventArgs e)
         {
             this.Close();
         }

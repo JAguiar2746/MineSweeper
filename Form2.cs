@@ -210,7 +210,7 @@ namespace MineSweeper
         }
         private void Form2_Activated(object sender, EventArgs e)
         {
-            if (timer1.Enabled == false && this.field.Started)
+            if (this.field.Started)
                 timer1.Start();
         }
         private void Form2_FormClosing(object sender, FormClosingEventArgs e)
@@ -219,6 +219,12 @@ namespace MineSweeper
             {
                 e.Cancel = true;
             }
+        }
+
+        private void Form2_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            ((MainForm)this.Owner).textBox1.Text = (Int32.Parse(((MainForm)this.Owner).textBox1.Text) - 1).ToString();
+            
         }
     }
 }

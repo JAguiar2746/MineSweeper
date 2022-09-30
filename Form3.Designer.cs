@@ -91,7 +91,7 @@
             this.row.Name = "row";
             this.row.Size = new System.Drawing.Size(49, 20);
             this.row.TabIndex = 8;
-            this.row.Text = "0";
+            this.row.Text = "1";
             // 
             // col
             // 
@@ -99,7 +99,7 @@
             this.col.Name = "col";
             this.col.Size = new System.Drawing.Size(49, 20);
             this.col.TabIndex = 9;
-            this.col.Text = "0";
+            this.col.Text = "1";
             // 
             // mines
             // 
@@ -107,7 +107,7 @@
             this.mines.Name = "mines";
             this.mines.Size = new System.Drawing.Size(49, 20);
             this.mines.TabIndex = 10;
-            this.mines.Text = "0";
+            this.mines.Text = "1";
             // 
             // Form3
             // 
