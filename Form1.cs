@@ -18,6 +18,21 @@ namespace MineSweeper
             InitializeComponent();
         }
 
+        private void radioButton3_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void radioButton2_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
         private void Play(object sender, EventArgs e)
         {
             int row=0, col=0,mines = 0;//row*col >=18, mines <= row*col/2
@@ -69,9 +84,9 @@ namespace MineSweeper
                 f.Close();
                 textBox1.Text = this.OwnedForms.Length.ToString();
             }
-            
-        }  
-       
+
+        }
+
         private void Menu_Click(object sender, EventArgs e)
         {
             this.Close();

@@ -69,6 +69,7 @@
             this.easy.TabStop = true;
             this.easy.Text = "Easy";
             this.easy.UseVisualStyleBackColor = true;
+            this.easy.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
             // 
             // medium
             // 
@@ -81,6 +82,7 @@
             this.medium.TabStop = true;
             this.medium.Text = "Medium";
             this.medium.UseVisualStyleBackColor = true;
+            this.medium.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
             // 
             // expert
             // 

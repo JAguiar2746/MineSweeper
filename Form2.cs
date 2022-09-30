@@ -121,7 +121,7 @@ namespace MineSweeper
                         field.Flagged.Add(click_x * buttons[0].Length + click_y);
                         textBox1.Text = (Int32.Parse(textBox1.Text) - 1).ToString();
 
-                    }
+                    }  
                     break;
                 case MouseButtons.Middle:
                     if (!this.field.Discovered.Contains(click_x * buttons[0].Length + click_y))
@@ -186,7 +186,7 @@ namespace MineSweeper
                     }
                     break;
             }
-
+                
 
         }
         private Button[][] buttons;
