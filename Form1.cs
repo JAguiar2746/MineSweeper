@@ -68,6 +68,8 @@ namespace MineSweeper
                 f = new Form2(text, row, col, size, mines);
                 f.Show(this);
                 textBox1.Text = this.OwnedForms.Length.ToString();
+                if(custom.Checked)
+                    textBox1.Text = (this.OwnedForms.Length - 1).ToString();
             }
         }
 
