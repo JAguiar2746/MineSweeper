@@ -19,9 +19,14 @@ namespace MineSweeper
         }
         public Form2(String text,int row, int col,int size,int mines) : this(){
             this.Text = text;
+<<<<<<< HEAD
             textBox1.Text = mines.ToString();
             field = new Field(row, col,mines);
             this.ClientSize = new Size(row * size, col * size+50);
+=======
+            field = new Field(row, col,mines);
+            this.ClientSize = new Size(row * size, col * size);
+>>>>>>> 6b422b82680f019e184440a7702daa12981ba38c
             buttons = new Button[row][];
             for (int i = 0; i < row; i++)
                 buttons[i] = new Button[col];
@@ -33,7 +38,11 @@ namespace MineSweeper
                     buttons[i][j].BackColor = Color.White;
                     buttons[i][j].Name = i + "," + j;
                     buttons[i][j].Size = new Size(size, size);
+<<<<<<< HEAD
                     buttons[i][j].Location = new Point(size * i, size * j+50);
+=======
+                    buttons[i][j].Location = new Point(size * i, size * j);
+>>>>>>> 6b422b82680f019e184440a7702daa12981ba38c
                     buttons[i][j].UseVisualStyleBackColor = false;
                     buttons[i][j].MouseUp += new MouseEventHandler(Button_Click);
                     this.Controls.Add(buttons[i][j]);
@@ -49,16 +58,23 @@ namespace MineSweeper
                 case MouseButtons.Left:
                     // Left click
                     if (!this.field.Started)
+<<<<<<< HEAD
                     {
                         this.field.Initialize(click_x, click_y);
                         timer1.Start();
                     }
+=======
+                        this.field.Initialize(click_x, click_y);
+>>>>>>> 6b422b82680f019e184440a7702daa12981ba38c
                     int n = this.field.CountMines(click_x, click_y);
                     if (this.field.IsMine(click_x, click_y))
                     {
                         b.BackColor = Color.Red;
                         MessageBox.Show("Game Over! You clicked on a mine!");
+<<<<<<< HEAD
                         timer1.Stop();
+=======
+>>>>>>> 6b422b82680f019e184440a7702daa12981ba38c
                         break;
                     }
                     if (this.field.Discovered.Contains(click_x * buttons[0].Length + click_y))
@@ -71,6 +87,7 @@ namespace MineSweeper
                         int m = this.field.CountMines(i, j);
                         if (m > 0) {
                             buttons[i][j].Text = m + "";
+<<<<<<< HEAD
                             buttons[i][j].Font = new Font("Microsoft Sans Serif",12, FontStyle.Bold);
                             buttons[i][j].BackColor = Color.LightGray;
                             if (m == 1){
@@ -96,6 +113,14 @@ namespace MineSweeper
                         MessageBox.Show("Congratulations! You discovered all safe squares!");
                         timer1.Stop();
                     }                        
+=======
+                            buttons[i][j].BackColor = Color.LightBlue;
+                        }else
+                            buttons[i][j].Enabled = false;
+                    }
+                    if(field.Win())
+                        MessageBox.Show("Congratulations! You discovered all safe squares!");
+>>>>>>> 6b422b82680f019e184440a7702daa12981ba38c
                     break;
                 case MouseButtons.Right:
                     // Right click
@@ -110,7 +135,10 @@ namespace MineSweeper
                     {
                         b.BackColor = Color.Green;
                         field.Flagged.Add(click_x * buttons[0].Length + click_y);
+<<<<<<< HEAD
                         textBox1.Text = (Int32.Parse(textBox1.Text) - 1).ToString();
+=======
+>>>>>>> 6b422b82680f019e184440a7702daa12981ba38c
                     }  
                     break;
                 case MouseButtons.Middle:
@@ -130,7 +158,10 @@ namespace MineSweeper
                         {
                             b.BackColor = Color.Red;
                             MessageBox.Show("Game Over! You clicked on a mine!");
+<<<<<<< HEAD
                             timer1.Stop();
+=======
+>>>>>>> 6b422b82680f019e184440a7702daa12981ba38c
                             break;
                         }
                         foreach (int l in this.field.GetSafeIsland(k/ buttons[0].Length, k% buttons[0].Length))
@@ -142,6 +173,7 @@ namespace MineSweeper
                             if (m > 0)
                             {
                                 buttons[i][j].Text = m + "";
+<<<<<<< HEAD
                                 buttons[i][j].Font = new Font("Microsoft Sans Serif", 12, FontStyle.Bold);
                                 buttons[i][j].BackColor = Color.LightGray;
                                 if (m == 1)
@@ -164,16 +196,23 @@ namespace MineSweeper
                                 {
                                     buttons[i][j].ForeColor = Color.Maroon;
                                 }
+=======
+                                buttons[i][j].BackColor = Color.LightBlue;
+>>>>>>> 6b422b82680f019e184440a7702daa12981ba38c
                             }
                             else
                                 buttons[i][j].Enabled = false;
                         }
                         if (field.Win())
+<<<<<<< HEAD
                         {
                             MessageBox.Show("Congratulations! You discovered all safe squares!");
                             timer1.Stop();
                         }
                             
+=======
+                            MessageBox.Show("Congratulations! You discovered all safe squares!");
+>>>>>>> 6b422b82680f019e184440a7702daa12981ba38c
                     }
                     break;
             }
@@ -182,6 +221,7 @@ namespace MineSweeper
         }
         private Button[][] buttons;
         private Field field;
+<<<<<<< HEAD
 
         private void Form2_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -213,5 +253,7 @@ namespace MineSweeper
             if (timer1.Enabled ==false && this.field.Started)
                 timer1.Start();
         }
+=======
+>>>>>>> 6b422b82680f019e184440a7702daa12981ba38c
     }
 }
