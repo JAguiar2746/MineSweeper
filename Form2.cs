@@ -101,8 +101,8 @@ namespace MineSweeper
                             buttons[i][j].Enabled = false;
                     }
                     if (field.Win())
-                    {
-                        MessageBox.Show("Congratulations! You discovered all safe squares in" + timer1.ToString());
+                    {                        
+                        MessageBox.Show("Congratulations! You discovered all safe squares in " + textBox2.Text + " seconds!");
                         timer1.Stop();
                     }
                     break;
@@ -179,8 +179,8 @@ namespace MineSweeper
                                 buttons[i][j].Enabled = false;
                         }
                         if (field.Win())
-                        {
-                            MessageBox.Show("Congratulations! You discovered all safe squares in" + timer1.ToString());
+                        {                            
+                            MessageBox.Show("Congratulations! You discovered all safe squares in " + textBox2.Text +" seconds!");
                             timer1.Stop();
                         }
                     }

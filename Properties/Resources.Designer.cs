@@ -55,6 +55,8 @@ namespace MineSweeper.Properties {
             get {
                 return resourceCulture;
             }
+            set 
+            { 
                 resourceCulture = value;
             }
         }
