@@ -17,38 +17,31 @@ namespace MineSweeper
         {
             InitializeComponent();
         }
-        public Form2(String text,int row, int col,int size,int mines) : this(){
+        public Form2(String text, int row, int col, int size, int mines) : this()
+        {
             this.Text = text;
-<<<<<<< HEAD
             textBox1.Text = mines.ToString();
-            field = new Field(row, col,mines);
-            this.ClientSize = new Size(row * size, col * size+50);
-=======
-            field = new Field(row, col,mines);
-            this.ClientSize = new Size(row * size, col * size);
->>>>>>> 6b422b82680f019e184440a7702daa12981ba38c
+            field = new Field(row, col, mines);
+            this.ClientSize = new Size(row * size, col * size +50);
             buttons = new Button[row][];
             for (int i = 0; i < row; i++)
                 buttons[i] = new Button[col];
-            foreach (int i in Enumerable.Range(0,row))
-                foreach (int j in Enumerable.Range(0,col))
+            foreach (int i in Enumerable.Range(0, row))
+                foreach (int j in Enumerable.Range(0, col))
                 {
                     buttons[i][j] = new Button();
                     buttons[i][j].Text = "";
                     buttons[i][j].BackColor = Color.White;
                     buttons[i][j].Name = i + "," + j;
                     buttons[i][j].Size = new Size(size, size);
-<<<<<<< HEAD
-                    buttons[i][j].Location = new Point(size * i, size * j+50);
-=======
-                    buttons[i][j].Location = new Point(size * i, size * j);
->>>>>>> 6b422b82680f019e184440a7702daa12981ba38c
+                    buttons[i][j].Location = new Point(size * i, size * j + 50);
                     buttons[i][j].UseVisualStyleBackColor = false;
                     buttons[i][j].MouseUp += new MouseEventHandler(Button_Click);
                     this.Controls.Add(buttons[i][j]);
                 }
         }
-        private void Button_Click(object sender, MouseEventArgs e) {
+        private void Button_Click(object sender, MouseEventArgs e)
+        {
             Button b = (Button)sender;
             int temp = b.Name.IndexOf(",");
             int click_x = Int16.Parse(b.Name.Substring(0, temp));
@@ -58,23 +51,16 @@ namespace MineSweeper
                 case MouseButtons.Left:
                     // Left click
                     if (!this.field.Started)
-<<<<<<< HEAD
                     {
                         this.field.Initialize(click_x, click_y);
                         timer1.Start();
                     }
-=======
-                        this.field.Initialize(click_x, click_y);
->>>>>>> 6b422b82680f019e184440a7702daa12981ba38c
                     int n = this.field.CountMines(click_x, click_y);
                     if (this.field.IsMine(click_x, click_y))
                     {
                         b.BackColor = Color.Red;
                         MessageBox.Show("Game Over! You clicked on a mine!");
-<<<<<<< HEAD
                         timer1.Stop();
-=======
->>>>>>> 6b422b82680f019e184440a7702daa12981ba38c
                         break;
                     }
                     if (this.field.Discovered.Contains(click_x * buttons[0].Length + click_y))
@@ -85,48 +71,46 @@ namespace MineSweeper
                         int j = k % buttons[0].Length;
                         buttons[i][j].BackColor = Color.LightGray;
                         int m = this.field.CountMines(i, j);
-                        if (m > 0) {
+                        if (m > 0)
+                        {
                             buttons[i][j].Text = m + "";
-<<<<<<< HEAD
-                            buttons[i][j].Font = new Font("Microsoft Sans Serif",12, FontStyle.Bold);
+                            buttons[i][j].Font = new Font("Microsoft Sans Serif", 12, FontStyle.Bold);
                             buttons[i][j].BackColor = Color.LightGray;
-                            if (m == 1){
+                            if (m == 1)
+                            {
                                 buttons[i][j].ForeColor = Color.Blue;
                             }
-                            else if (m == 2){
+                            else if (m == 2)
+                            {
                                 buttons[i][j].ForeColor = Color.Green;
                             }
-                            else if (m == 3){
+                            else if (m == 3)
+                            {
                                 buttons[i][j].ForeColor = Color.Red;
                             }
-                            else if (m == 4){
+                            else if (m == 4)
+                            {
                                 buttons[i][j].ForeColor = Color.DarkBlue;
                             }
-                            else if (m == 5){
+                            else if (m == 5)
+                            {
                                 buttons[i][j].ForeColor = Color.Maroon;
                             }
-                        }else
+                        }
+                        else
                             buttons[i][j].Enabled = false;
                     }
                     if (field.Win())
                     {
-                        MessageBox.Show("Congratulations! You discovered all safe squares!");
+                        MessageBox.Show("Congratulations! You discovered all safe squares in" + timer1.ToString());
                         timer1.Stop();
-                    }                        
-=======
-                            buttons[i][j].BackColor = Color.LightBlue;
-                        }else
-                            buttons[i][j].Enabled = false;
                     }
-                    if(field.Win())
-                        MessageBox.Show("Congratulations! You discovered all safe squares!");
->>>>>>> 6b422b82680f019e184440a7702daa12981ba38c
                     break;
                 case MouseButtons.Right:
                     // Right click
                     if (this.field.Discovered.Contains(click_x * buttons[0].Length + click_y))
                         break;
-                    if(field.Flagged.Contains(click_x * buttons[0].Length + click_y))
+                    if (field.Flagged.Contains(click_x * buttons[0].Length + click_y))
                     {
                         b.BackColor = Color.White;
                         field.Flagged.Remove(click_x * buttons[0].Length + click_y);
@@ -135,11 +119,9 @@ namespace MineSweeper
                     {
                         b.BackColor = Color.Green;
                         field.Flagged.Add(click_x * buttons[0].Length + click_y);
-<<<<<<< HEAD
                         textBox1.Text = (Int32.Parse(textBox1.Text) - 1).ToString();
-=======
->>>>>>> 6b422b82680f019e184440a7702daa12981ba38c
-                    }  
+
+                    }
                     break;
                 case MouseButtons.Middle:
                     if (!this.field.Discovered.Contains(click_x * buttons[0].Length + click_y))
@@ -158,13 +140,10 @@ namespace MineSweeper
                         {
                             b.BackColor = Color.Red;
                             MessageBox.Show("Game Over! You clicked on a mine!");
-<<<<<<< HEAD
                             timer1.Stop();
-=======
->>>>>>> 6b422b82680f019e184440a7702daa12981ba38c
                             break;
                         }
-                        foreach (int l in this.field.GetSafeIsland(k/ buttons[0].Length, k% buttons[0].Length))
+                        foreach (int l in this.field.GetSafeIsland(k / buttons[0].Length, k % buttons[0].Length))
                         {
                             int i = l / buttons[0].Length;
                             int j = l % buttons[0].Length;
@@ -173,7 +152,6 @@ namespace MineSweeper
                             if (m > 0)
                             {
                                 buttons[i][j].Text = m + "";
-<<<<<<< HEAD
                                 buttons[i][j].Font = new Font("Microsoft Sans Serif", 12, FontStyle.Bold);
                                 buttons[i][j].BackColor = Color.LightGray;
                                 if (m == 1)
@@ -196,40 +174,23 @@ namespace MineSweeper
                                 {
                                     buttons[i][j].ForeColor = Color.Maroon;
                                 }
-=======
-                                buttons[i][j].BackColor = Color.LightBlue;
->>>>>>> 6b422b82680f019e184440a7702daa12981ba38c
                             }
                             else
                                 buttons[i][j].Enabled = false;
                         }
                         if (field.Win())
-<<<<<<< HEAD
                         {
-                            MessageBox.Show("Congratulations! You discovered all safe squares!");
+                            MessageBox.Show("Congratulations! You discovered all safe squares in" + timer1.ToString());
                             timer1.Stop();
                         }
-                            
-=======
-                            MessageBox.Show("Congratulations! You discovered all safe squares!");
->>>>>>> 6b422b82680f019e184440a7702daa12981ba38c
                     }
                     break;
             }
-                
+
 
         }
         private Button[][] buttons;
         private Field field;
-<<<<<<< HEAD
-
-        private void Form2_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            if (MessageBox.Show("Are you sure you want to close?", "Confirm", MessageBoxButtons.YesNo) == DialogResult.No)
-            {
-                e.Cancel = true;
-            }
-        }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
@@ -247,13 +208,17 @@ namespace MineSweeper
         {
             timer1.Stop();
         }
-
         private void Form2_Activated(object sender, EventArgs e)
         {
-            if (timer1.Enabled ==false && this.field.Started)
+            if (timer1.Enabled == false && this.field.Started)
                 timer1.Start();
         }
-=======
->>>>>>> 6b422b82680f019e184440a7702daa12981ba38c
+        private void Form2_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (MessageBox.Show("Are you sure you want to close?", "Confirm", MessageBoxButtons.YesNo) == DialogResult.No)
+            {
+                e.Cancel = true;
+            }
+        }
     }
 }
